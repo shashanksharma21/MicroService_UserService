@@ -1,0 +1,42 @@
+server:
+  port: 8081
+  
+spring:
+  jwtConfig:
+    token-validity: 300000
+    refresh-token-validity: 600000
+    secret-key: secretkey
+  datasource:
+    url: jdbc:mysql://localhost:3306/ecommerce_app
+    username: root
+    password: tiger
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:  
+    web: 
+      exposure: 
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    
+resilience4j:
+  circuitbreaker:
+    instances:
+      userProductBreaker:
+        registerHealthIndicator: true
+        event-consumer-buffer-size: 10
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 5
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 6s
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowSize: 10
+        slidingWindowType: COUNT_BASED
