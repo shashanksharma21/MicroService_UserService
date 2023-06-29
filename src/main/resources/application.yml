@@ -9,7 +9,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/ecommerce_app
     username: root
-    password: tiger
+    password: intelliatech
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
