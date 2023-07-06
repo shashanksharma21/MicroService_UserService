@@ -13,7 +13,7 @@ services:
       - bootcomposeapp
 
   user-service:
-    build: ./UserService/
+    build: ./
     depends_on: 
       - dbservice_mysql
     environment:
