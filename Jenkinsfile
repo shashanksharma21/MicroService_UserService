@@ -27,7 +27,7 @@ pipeline {
         stage("run DockerContainer") {
             steps {
                 echo "======== running docker image as user-serviceContainer ========"
-                bat "./docker-compose up -d"
+                bat "docker-compose up -d"
             }
         }
     }
